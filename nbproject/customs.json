@@ -1,0 +1,29 @@
+{
+    "elements": {
+        "v-file-input": {},
+        "v-text-field": {
+            "attributes": {
+                "label": {},
+                "v-model": {}
+            }
+        },
+        "v-row": {},
+        "v-img": {
+            "attributes": {
+                ":src": {}
+            }
+        },
+        "v-col": {
+            "attributes": {
+                "md": {},
+                "sm": {},
+                "cols": {}
+            }
+        },
+        "v-container": {}
+    },
+    "attributes": {
+        "label": {},
+        "v-model": {}
+    }
+}

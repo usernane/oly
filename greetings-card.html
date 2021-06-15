@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script type="text/javascript" src="https://unpkg.com/vue@2.6.11">
+        </script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vuetify@2.5.0/dist/vuetify.js">
+        </script>
+        <link rel=stylesheet href="https://cdn.jsdelivr.net/npm/vuetify@2.5.0/dist/vuetify.min.css">
+        <link rel=stylesheet href="https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css">
+        <link rel=stylesheet href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900">
+    </head>
+    <body>
+        <div id="card-application">
+            <v-container>
+                <v-row>
+                    <v-col cols="12" sm="12" md="6">
+                        <v-file-input @change="imageSelected" v-model="image_file" label="إختر الصورة المُراد الكتابة عليها">
+                            
+                        </v-file-input>
+                    </v-col>
+                </v-row>
+                <v-row>
+                    <v-col cols="12" sm="12" md="6">
+                        <v-text-field v-model="text_on_img" label="اكتب النص اللذي تريد عرضه على الصورة">
+                            
+                        </v-text-field>
+                    </v-col>
+                </v-row>
+                <v-row>
+                    <v-col cols="12" sm="12" md="6">
+                        <v-img :src="img_data">
+                            
+                        </v-img>
+                    </v-col>
+                </v-row>
+            </v-container>
+        </div>
+        <script src="card-application.js"></script>
+    </body>
+</html>

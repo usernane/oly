@@ -4,32 +4,33 @@
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script type="text/javascript" src="https://unpkg.com/vue@2.6.11">
+        <script src="https://unpkg.com/vue@2.6.11">
         </script>
-        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vuetify@2.5.0/dist/vuetify.js">
-        </script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js">
+        
+        <script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js">
             
         </script>
-        <link rel=stylesheet href="https://cdn.jsdelivr.net/npm/vuetify@2.5.0/dist/vuetify.min.css">
-        <link rel=stylesheet href="https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css">
-        <link rel=stylesheet href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vuetify@2.5.0/dist/vuetify.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900">
+        <script src="https://cdn.jsdelivr.net/npm/vuetify@2.5.0/dist/vuetify.js">
+        </script>
     </head>
     <body>
-        <div id="card-application">
+        <v-app id="card-application">
             <v-container>
-                <v-row>
+                <v-row justify="center">
                     <v-col cols="12" sm="12" md="6">
-                        <v-file-input 
-                            
+                        <v-file-input                            
                             v-model="image_file" 
                             label="إختر الصورة المُراد الكتابة عليها"
-                            :rules="[imageSelected, validateWidthAndHeight]">
+                            :rules="[imageSelected, validateWidthAndHeight]"
+                            accept=="image/*">
                             
                         </v-file-input>
                     </v-col>
                 </v-row>
-                <v-row>
+                <v-row justify="center">
                     <v-col cols="12" sm="12" md="6">
                         <v-text-field 
                             v-model="text_on_img" 
@@ -39,25 +40,70 @@
                         </v-text-field>
                     </v-col>
                 </v-row>
-                <v-row>
+                <v-row justify="center">
                     <v-col cols="12" sm="12" md="6">
+                        <v-expansion-panels>
+                            <v-expansion-panel>
+                                <v-expansion-panel-header>
+                                    <div>
+                                        <v-icon style="width:50px">
+                                            mdi-cog
+                                        </v-icon>
+                                    </div>
+                                    خيارات اضافية
+                                </v-expansion-panel-header>
+                                <v-expansion-panel-content>
+                                    <v-row>
+                                        <v-col cols="12" sm="12" md="6">
+                                            <v-color-picker 
+                                                v-model="text_properties.color" 
+                                                hide-inputs dot-size="25" 
+                                                swatches-max-height="250"
+                                                @input="drawText">
+                                                
+                                            </v-color-picker>
+                                        </v-col>
+                                        <v-col cols="12" sm="12" md="6">
+                                            <v-text-field type="number" v-model="text_position.x" label="X" @input="drawText">
+                                                
+                                            </v-text-field>
+                                            <v-text-field type="number" v-model="text_position.y" label="Y" @input="drawText">
+                                                
+                                            </v-text-field>
+                                        </v-col>
+                                    </v-row>
+                                </v-expansion-panel-content>
+                            </v-expansion-panel>
+                        </v-expansion-panels>
+                    </v-col>
+                </v-row>
+                <v-row justify="center">
+                    <v-col cols="12" sm="12" md="6" style="border: 1px solid; text-align: center">
                         <canvas id="img-canvas" :width="allowed_dim.width" :height="allowed_dim.height">
                             
                         </canvas>
                     </v-col>
                 </v-row>
-                <v-row>
-                    <v-col cols="12">
-                        <v-btn @click="saveAsJpg">
-                            حفظ كصورة
-                        </v-btn>
-                        <v-btn @click="saveAsPDF">
+                <v-row align="center" justify="center">
+                    <v-col cols="12" sm="12" md="6" style="text-align: center">
+                        <v-btn width="50%" @click="saveAsPDF" color="green">
                             حفظ ك بي دي اف
+                            <v-icon>
+                                mdi-file-pdf-outline
+                            </v-icon>
+                        </v-btn>
+                    </v-col>
+                    <v-col cols="12" sm="12" md="6" style="text-align: center">
+                        <v-btn width="50%" @click="saveAsJpg" color="green">
+                            حفظ كصورة
+                            <v-icon>
+                                mdi-file-image-outline
+                            </v-icon>
                         </v-btn>
                     </v-col>
                 </v-row>
             </v-container>
-        </div>
+        </v-app>
         <script src="card-application.js"></script>
     </body>
 </html>

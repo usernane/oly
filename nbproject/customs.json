@@ -1,5 +1,6 @@
 {
     "elements": {
+        "v-btn": {},
         "v-file-input": {},
         "v-text-field": {
             "attributes": {
@@ -13,6 +14,7 @@
                 ":src": {}
             }
         },
+        "v-spacer": {},
         "v-col": {
             "attributes": {
                 "md": {},
@@ -24,6 +26,8 @@
     },
     "attributes": {
         "label": {},
+        ":width": {},
+        "click": {},
         "v-model": {}
     }
 }

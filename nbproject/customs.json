@@ -1,19 +1,23 @@
 {
     "elements": {
-        "v-btn": {},
-        "v-file-input": {},
         "v-text-field": {
             "attributes": {
                 "label": {},
                 "v-model": {}
             }
         },
+        "v-expansion-panel-content": {},
+        "v-btn": {},
+        "v-file-input": {},
+        "v-color-picker": {},
         "v-row": {},
+        "v-icon": {},
         "v-img": {
             "attributes": {
                 ":src": {}
             }
         },
+        "v-expansion-panels": {},
         "v-spacer": {},
         "v-col": {
             "attributes": {
@@ -22,12 +26,24 @@
                 "cols": {}
             }
         },
-        "v-container": {}
+        "v-expansion-panel-header": {},
+        "v-container": {},
+        "v-app": {},
+        "v-expansion-panel": {}
     },
     "attributes": {
+        "align-self": {},
+        "color": {},
+        "accepts": {},
         "label": {},
-        ":width": {},
+        ":rules": {},
+        "align": {},
         "click": {},
-        "v-model": {}
+        "v-model": {},
+        "accept": {},
+        "input": {},
+        "justify": {},
+        "style": {},
+        ":width": {}
     }
 }

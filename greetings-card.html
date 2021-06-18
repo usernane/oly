@@ -24,7 +24,7 @@
                             v-model="image_file" 
                             label="إختر الصورة المُراد الكتابة عليها"
                             :rules="[imageSelected, validateWidthAndHeight]"
-                            accept=="image/*">
+                            accept=="image/png,image/jpg">
                             
                         </v-file-input>
                     </v-col>
@@ -63,10 +63,15 @@
                                             </v-color-picker>
                                         </v-col>
                                         <v-col cols="12" sm="12" md="6">
-                                            <v-text-field type="number" v-model="text_position.x" label="X" @input="drawText">
+                                            <v-text-field type="number" v-model="text_properties.position.x" label="X" @input="drawText">
                                                 
                                             </v-text-field>
-                                            <v-text-field type="number" v-model="text_position.y" label="Y" @input="drawText">
+                                            <v-text-field type="number" v-model="text_properties.position.y" label="Y" @input="drawText">
+                                                
+                                            </v-text-field>
+                                        </v-col>
+                                        <v-col cols="12" sm="12" md="6">
+                                            <v-text-field type="number" v-model="text_properties.size" label="حجم الخط (نقطة)" @input="drawText">
                                                 
                                             </v-text-field>
                                         </v-col>

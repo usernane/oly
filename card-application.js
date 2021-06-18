@@ -22,12 +22,14 @@ var app = new Vue({
             width:400,
             height:400
         },
-        text_position:{
-            x:300,
-            y:25
-        },
         text_properties:{
-            color:'#000'
+            color:'#000',
+            size:20,
+            font:'Times New Roman',
+            position:{
+                x:300,
+                y:25
+            },
         },
         fill_style:'rgba(255, 0, 0, 0.5)'
     },
@@ -57,18 +59,21 @@ var app = new Vue({
             pdf.save("GreetingsCard.pdf");
         },
         drawText:function() {
+            var txt = this.text_on_img;
+            if (txt === null || txt.trim().length === 0) {
+                return;
+            }
             var context = this.canvas_context;
             context.drawImage(this.img_obj, 0, 0, this.allowed_dim.width, this.allowed_dim.height);
             context.fillStyle = this.text_properties.color;
-            context.fillText(this.text_on_img, this.text_position.x, this.text_position.y);
+            context.fillText(txt.trim(), this.text_properties.position.x, this.text_properties.position.y);
             
             //Add shadow effect
-            context.shadowOffsetX = this.text_position.width + 2;
-            context.shadowOffsetY = this.text_position.height + 22;
+            context.shadowOffsetX = this.text_properties.position.width + 2;
+            context.shadowOffsetY = this.text_properties.position.height + 22;
             context.shadowBlur = 2;
             context.shadowColor = 'rgba(0, 0, 0, 0.5)';
-            
-            context.font = '20px Times New Roman';
+            context.font = this.text_properties.size+'pt '+this.text_properties.font;
         },
         imageSelected:function() {
             if (this.image_file !== null) {
@@ -79,7 +84,7 @@ var app = new Vue({
                     thisVue.img_obj.src = this.result;
                 };
                 fileReader.readAsDataURL(this.image_file);
-                
+                this.drawText();
                 return true;
             } else {
                 console.log('No image is selected.');

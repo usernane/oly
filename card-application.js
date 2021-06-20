@@ -64,9 +64,23 @@ var app = new Vue({
                 return;
             }
             var context = this.canvas_context;
+            
+            
+            
             context.drawImage(this.img_obj, 0, 0, this.allowed_dim.width, this.allowed_dim.height);
+            
+            context.strokeStyle = "red";
+            context.moveTo(255, 20);
+            context.lineTo(255, 270);
+            context.stroke();
+            
             context.fillStyle = this.text_properties.color;
+            
             context.fillText(txt.trim(), this.text_properties.position.x, this.text_properties.position.y);
+            
+            context.textAlign = "center";   
+            
+            context.fillText(this.text_on_img,255, 160);
             
             //Add shadow effect
             context.shadowOffsetX = this.text_properties.position.width + 2;

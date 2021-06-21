@@ -1,0 +1,4 @@
+# Files and folders here will be not included when creating package
+/.github export-ignore
+/.gitignore export-ignore
+/nbproject
